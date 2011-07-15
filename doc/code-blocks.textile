@@ -3,7 +3,9 @@ layout: default
 title: Code Blocks
 ---
 
-h2. Opening curly braces (@{@) must be on the same line as the declaration they represent
+h2. Opening curly braces (@{@) should be on the same line
+
+... as the declaration they represent.
 
 {% highlight scala %}
   // right
@@ -12,7 +14,7 @@ h2. Opening curly braces (@{@) must be on the same line as the declaration they 
   }
 {% endhighlight %}
 
-h2. Always use braces and an indented code block with @if@, @while@ and @for@.
+h2. Use braces and indented code block with @if@, @while@ and @for@.
 
 {% highlight scala %}
   // wrong
