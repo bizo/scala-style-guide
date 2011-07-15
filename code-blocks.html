@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-    <title>Bizo Scala Style Guide &mdash; Anonymous Code Blocks</title>
+    <title>Bizo Scala Style Guide &mdash; Code Blocks</title>
     <style type='text/css'>
       @import 'css/default.css';
       @import 'css/syntax.css';
@@ -53,45 +53,39 @@
         </ol>
       </div>
       <div id='content'>
-        <h1 id='anonymous code blocks'>Anonymous Code Blocks</h1>
+        <h1 id='code blocks'>Code Blocks</h1>
         <ol class="toc"></ol>
         <h2>Always use braces and an indented code block with <code>if</code>, <code>while</code> and <code>for</code>.</h2>
-<p>&nbps;</p>
-<p>{% highlight scala <span>}<br />
-  // wrong<br />
-  if (condition) log.info(&#8220;something interesting happened&#8221;)<br />
-{</span> endhighlight %}</p>
-<p>{% highlight scala <span>}<br />
-  // wrong<br />
-  if (condition)<br />
-    log.info(&#8220;something interesting happened&#8221;)<br />
-{</span> endhighlight %}</p>
-<p>{% highlight scala <span>}<br />
-  // wrong<br />
-  if (condition)<br />
-    log.info(&#8220;something interesting happened&#8221;)<br />
-  else<br />
-    log.info(&#8220;nothing happened, really&#8221;)<br />
-{</span> endhighlight %}</p>
-<p>{% highlight scala <span>}<br />
-  // right<br />
-  if (condition) {<br />
-    log.info(&#8220;something interesting happened&#8221;)<br />
-  }<br />
-{</span> endhighlight %}</p>
-<p>{% highlight scala <span>}<br />
-  // right<br />
-  if (condition) {<br />
-    log.info(&#8220;something interesting happened&#8221;)<br />
-  } else {<br />
-    log.info(&#8220;nothing happened, really&#8221;)<br />
-  }<br />
-{</span> endhighlight %}</p>
-<p>The only exception to this rule is when an {{if} is used as substitute for the ternary operator (?) &#8212; which is not available in Scala &#8212; and when the entire expression fits in a single line,</p>
-<p>{% highlight scala <span>}<br />
-  // right<br />
-  val level = if (state == &#8220;dev&#8221;) debugLevel else warnLevel<br />
-{</span> endhighlight %}</p>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
+  <span class="k">else</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;nothing happened, really&quot;</span><span class="o">)</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;nothing happened, really&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div><p>The only exception to this rule is when an <code>if</code> is used as substitute for the ternary operator (<code>?</code>) &#8212; which is not available in Scala &#8212; and when the entire expression fits in a single line,</p>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
+  <span class="k">val</span> <span class="n">level</span> <span class="k">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">state</span> <span class="o">==</span> <span class="s">&quot;dev&quot;</span><span class="o">)</span> <span class="n">debugLevel</span> <span class="k">else</span> <span class="n">warnLevel</span>
+</code></pre>
+</div>
       </div>
       <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
     </div>
