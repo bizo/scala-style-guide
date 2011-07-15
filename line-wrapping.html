@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+    <title>Bizo Scala Style Guide &mdash; Line Wrapping</title>
+    <style type='text/css'>
+      @import 'css/default.css';
+      @import 'css/syntax.css';
+    </style>
+    <style media='print' type='text/css'>
+      @import 'css/print.css';
+    </style>
+    <meta content='Bizo Scala Style Guide' name='subject'>
+    <link href='images/favicon.png' rel='shortcut icon'>
+  </head>
+  <body>
+    <div id='wrap'>
+      <div id='header'>
+        <a href='http://bizo.github.com/scala-style-guide/' title="Bizo's Scala Style Guide"><img alt='Bizo' src='images/bizo-logo.png'></a>
+        <div class='tagline'>Conventions over Obfuscation :)</div>
+      </div>
+      <div id='pages'>
+        <ol class='toc'>
+          <li>Start Here
+            <ol class="toc">
+              <li><a href='index.html'>Introduction</a></li>
+            </ol>
+          </li>
+          <li>Guidelines
+            <ol class="toc">
+              <li><a href='white-space.html'>White Space</a></li>
+              <li><a href='indentation.html'>Indentation</a></li>
+              <li><a href='line-wrapping.html'>Line Wrapping</a></li>
+            </ol>
+          </li>
+          <li>Reference
+            <ol class="toc">
+              <li><a href='http://scala-lang.org'>Scala</a></li>
+              <li><a href='http://www.bizo.com'>Bizo</a></li>
+            </ol>
+          </li>
+          <li>
+            <form action='http://www.google.com/cse' id='searchbox_000:xxx'>
+              <input name='cx' type='hidden' value='000:xxx'>
+              <input name='cof' type='hidden' value='FORID:0'>
+              <input name='q' size='20' type='text'>
+              <input name='sa' type='submit' value='Search'>
+              <img alt='Google Custom Search' src='http://www.google.com/coop/images/google_custom_search_smnar.gif'>
+            </form>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <h1 id='line wrapping'>Line Wrapping</h1>
+        <ol class="toc"><li>Indentation</li><li>Single expression</li><li>Class definition</li><li>Single expression method body</li></ol>
+        <h2>Indentation</h2>
+<p>Indentation for wrapped lines is 4 spaces.</p>
+<h2>Single expression</h2>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
+  <span class="k">private</span> <span class="k">val</span> <span class="n">socketTimeout</span> <span class="k">=</span> <span class="o">(</span><span class="nc">Option</span><span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;socketTimeout&quot;</span><span class="o">))</span> <span class="n">map</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
+    <span class="n">getOrElse</span> <span class="n">defaultSocketTimeout</span><span class="o">)</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
+  <span class="k">private</span> <span class="k">val</span> <span class="n">socketTimeout</span> <span class="k">=</span> <span class="o">(</span>
+      <span class="nc">Option</span><span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;socketTimeout&quot;</span><span class="o">))</span>
+          <span class="n">map</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
+          <span class="n">getOrElse</span> <span class="n">defaultSocketTimeout</span>
+  <span class="o">)</span>
+</code></pre>
+</div><p>As you can see above, it&#8217;s a good idea to wrap for each operator-and-arguments pair.</p>
+<h2>Class definition</h2>
+<div class="highlight"><pre><code class="scala"><span class="c1">// wrong</span>
+<span class="k">class</span> <span class="nc">SugarcubeServer</span><span class="o">(</span><span class="k">val</span> <span class="n">catalog</span><span class="k">:</span> <span class="kt">Catalog</span><span class="o">,</span> <span class="k">val</span> <span class="n">databases</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span>
+  <span class="k">val</span> <span class="n">config</span><span class="k">:</span> <span class="kt">Properties</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Properties</span><span class="o">())</span> <span class="k">extends</span> <span class="nc">ThriftServer</span> <span class="k">with</span> <span class="nc">JettyServer</span> <span class="o">{</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
+<span class="k">class</span> <span class="nc">SugarcubeServer</span><span class="o">(</span>
+    <span class="k">val</span> <span class="n">catalog</span><span class="k">:</span> <span class="kt">Catalog</span><span class="o">,</span>
+    <span class="k">val</span> <span class="n">databases</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span>
+    <span class="k">val</span> <span class="n">config</span><span class="k">:</span> <span class="kt">Properties</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Properties</span><span class="o">()</span>
+<span class="o">)</span> <span class="k">extends</span> <span class="nc">ThriftServer</span> <span class="k">with</span> <span class="nc">JettyServer</span> <span class="o">{</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</code></pre>
+</div><h2>Single expression method body</h2>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// preferred</span>
+  <span class="k">def</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">n</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="n">a</span>
+    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
+  <span class="k">def</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">n</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="n">a</span>
+      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">fibonacci</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+      </div>
+      <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
+    </div>
+  </body>
+</html>

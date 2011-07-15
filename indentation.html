@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-    <title>Bizo Scala Style Guide &mdash; Introduction</title>
+    <title>Bizo Scala Style Guide &mdash; Indentation</title>
     <style type='text/css'>
       @import 'css/default.css';
       @import 'css/syntax.css';
@@ -50,19 +50,21 @@
         </ol>
       </div>
       <div id='content'>
-        <h1 id='introduction'>Introduction</h1>
-        <ol class="toc"><li><a href="#principles">Guiding Principles</a></li><li><a href="#news">What&#8217;s New</a></li><li><a href="#notices">Credits &amp; Notices</a></li></ol>
-        <p>blah blah</p>
-<p>So let&#8217;s get started.  You can <a href="index.html">read the documentation online</a>, or <a href="bizo-scala-style-guide.pdf">download the <span class="caps">PDF</span></a>.</p>
-<h2 id="principles">Guiding Principles</h2>
-<ul>
-	<li>Do no harm.</li>
-	<li>One now is better than two later.</li>
-</ul>
-<h2 id="news">What&#8217;s New</h2>
-<p>See the <a href="CHANGELOG"><span class="caps">CHANGELOG</span></a> for full details.</p>
-<h2 id="notices">Credits &amp; Notices</h2>
-<p>Copyright &#169; 2011 Bizo inc.</p>
+        <h1 id='indentation'>Indentation</h1>
+        <ol class="toc"><li>Blocks</li></ol>
+        <h2>Blocks</h2>
+<p>Use 2 spaces to indent code blocks.</p>
+<div class="highlight"><pre><code class="scala"><span class="c1">// wrong (4 spaces)</span>
+<span class="k">class</span> <span class="nc">Foo</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">bar</span><span class="o">()</span> <span class="k">=</span> <span class="o">...</span>
+<span class="o">}</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala"><span class="c1">// right (2 spaces)</span>
+<span class="k">class</span> <span class="nc">Foo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">bar</span><span class="o">()</span> <span class="k">=</span> <span class="o">...</span>
+<span class="o">}</span>
+</code></pre>
+</div>
       </div>
       <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
     </div>
