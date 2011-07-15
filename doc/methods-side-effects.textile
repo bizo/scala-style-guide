@@ -1,0 +1,54 @@
+---
+layout: default
+title: Methods and Side Effects
+---
+
+h2. One-line methods: simple expressions
+
+One-line methods with simple expressions do not require braces:
+
+{% highlight scala %}
+  // preferred
+  def hasNext: Boolean = (i < end)
+{% endhighlight %}
+
+{% highlight scala %}
+  // hmmm-kay
+  def hasNext: Boolean = {
+    i < end
+  }
+{% endhighlight %}
+
+h2. Side-effecting methods
+
+One-line methods with side-effects should use braces (instead of using equal),
+
+{% highlight scala %}
+  // preferred
+  def next() {
+    i += 1
+  }
+{% endhighlight %}
+
+{% highlight scala %}
+  // hmmm-kay
+  def next() { i += 1 }
+{% endhighlight %}
+
+{% highlight scala %}
+  // wrong: no parenthesis indicating effect
+  def next { i += 1 }
+{% endhighlight %}
+
+{% highlight scala %}
+  // wrong: equal sign shouldn't be used for Unit-returning methods
+  def next() = { i += 1 }
+{% endhighlight %}
+
+{% highlight scala %}
+  // wrong: equal sign shouldn't be used for Unit-returning methods
+  def next() = {
+    i += 1
+  }
+{% endhighlight %}
+

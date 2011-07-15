@@ -3,8 +3,7 @@ layout: default
 title: Introduction
 ---
 
-blah blah
-
+TODO: blah blah
 
 So let's get started.  You can "read the documentation online":index.html, or "download the PDF":bizo-scala-style-guide.pdf.
 

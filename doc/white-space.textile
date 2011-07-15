@@ -29,7 +29,7 @@ h2. Spaces around arguments and operators
 h3. One space after commas
 
 {% highlight scala %}
-// wrong: missig space after comma
+// wrong: missing space after comma
 def foo(a:Any,b:Ref) = ...
 {% endhighlight %}
 
