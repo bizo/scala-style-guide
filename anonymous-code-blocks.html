@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+    <title>Bizo Scala Style Guide &mdash; Anonymous Code Blocks</title>
+    <style type='text/css'>
+      @import 'css/default.css';
+      @import 'css/syntax.css';
+    </style>
+    <style media='print' type='text/css'>
+      @import 'css/print.css';
+    </style>
+    <meta content='Bizo Scala Style Guide' name='subject'>
+    <link href='images/favicon.png' rel='shortcut icon'>
+  </head>
+  <body>
+    <div id='wrap'>
+      <div id='header'>
+        <a href='http://bizo.github.com/scala-style-guide/' title="Bizo's Scala Style Guide"><img alt='Bizo' src='images/bizo-logo.png'></a>
+        <div class='tagline'>Conventions over Obfuscation :)</div>
+      </div>
+      <div id='pages'>
+        <ol class='toc'>
+          <li>Start Here
+            <ol class="toc">
+              <li><a href='index.html'>Introduction</a></li>
+            </ol>
+          </li>
+          <li>Guidelines
+            <ol class="toc">
+              <li><a href='white-space.html'>White Space</a></li>
+              <li><a href='indentation.html'>Indentation</a></li>
+              <li><a href='line-wrapping.html'>Line Wrapping</a></li>
+              <li><a href='methods-side-effects.html'>Methods &amp; Side Effects</a></li>
+              <li><a href='code-blocks.html'>Code Blocks</a></li>
+              <li><a href='anonymous-code-blocks.html'>Anonymous Code Blocks</a></li>
+            </ol>
+          </li>
+          <li>Reference
+            <ol class="toc">
+              <li><a href='http://scala-lang.org'>Scala</a></li>
+              <li><a href='http://www.bizo.com'>Bizo</a></li>
+            </ol>
+          </li>
+          <li>
+            <form action='http://www.google.com/cse' id='searchbox_000:xxx'>
+              <input name='cx' type='hidden' value='000:xxx'>
+              <input name='cof' type='hidden' value='FORID:0'>
+              <input name='q' size='20' type='text'>
+              <input name='sa' type='submit' value='Search'>
+              <img alt='Google Custom Search' src='http://www.google.com/coop/images/google_custom_search_smnar.gif'>
+            </form>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <h1 id='anonymous code blocks'>Anonymous Code Blocks</h1>
+        <ol class="toc"><li>Use parenthesis for anonymous functions with underscore prefix</li><li>Use braces and new idented code block for longer anonymous functions</li></ol>
+        <h2>Use parenthesis for anonymous functions with underscore prefix</h2>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// preferred</span>
+  <span class="k">val</span> <span class="n">cubes</span> <span class="k">=</span> <span class="nc">_localCubes</span><span class="o">.</span><span class="n">values</span> <span class="n">flatMap</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">values</span><span class="o">)</span>
+</code></pre>
+</div><div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
+  <span class="k">val</span> <span class="n">cubes</span> <span class="k">=</span> <span class="nc">_localCubes</span><span class="o">.</span><span class="n">values</span> <span class="n">flatMap</span> <span class="o">{</span> <span class="n">_</span><span class="o">.</span><span class="n">values</span> <span class="o">}</span>
+</code></pre>
+</div><h2>Use braces and new idented code block for longer anonymous functions</h2>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
+  <span class="k">val</span> <span class="n">remotePartitions</span> <span class="k">=</span> <span class="n">latest</span><span class="o">.</span><span class="n">partitions</span> <span class="n">map</span> <span class="o">{</span> <span class="n">p</span> <span class="k">=&gt;</span>
+    <span class="k">val</span> <span class="n">partition</span> <span class="k">=</span> <span class="nc">Json</span><span class="o">.</span><span class="n">parse</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="n">partition</span><span class="o">)</span>
+    <span class="k">val</span> <span class="n">pv</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PartitionVersion</span><span class="o">(</span><span class="k">new</span> <span class="nc">Partition</span><span class="o">(</span><span class="n">dims</span><span class="o">,</span> <span class="n">partition</span><span class="o">),</span> <span class="n">p</span><span class="o">.</span><span class="n">version</span><span class="o">)</span>
+    <span class="k">new</span> <span class="nc">RemotePartition</span><span class="o">(</span><span class="n">cube</span><span class="o">.</span><span class="n">database</span><span class="o">,</span> <span class="n">cube</span><span class="o">.</span><span class="n">cube</span><span class="o">,</span> <span class="n">pv</span><span class="o">,</span> <span class="n">path</span><span class="o">(</span><span class="n">cubeURL</span><span class="o">,</span> <span class="n">pv</span><span class="o">.</span><span class="n">partitionPath</span><span class="o">))</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+      </div>
+      <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
+    </div>
+  </body>
+</html>
