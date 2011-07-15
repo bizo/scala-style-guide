@@ -3,9 +3,33 @@ layout: default
 title: Line Wrapping
 ---
 
-h2. Indentation
+h2. Line Length and Indentation
+
+The recommended maximum line length is 120 characters.
 
 Indentation for wrapped lines is 4 spaces.
+
+h2. Wrapping expression in parenthesis
+
+There are two ways to wrap lines safely in Scala. It's possible to leave a trailing operator,
+
+{% highlight scala %}
+// wrong
+val result = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19 + 20 + 21 + 22 + 23 +
+    24 + 25 + 26 + 27 + 28 + 29 + 30 + 31 + 32 + 33
+{% endhighlight %}
+
+or it's possible to wrap everything in a set of parenthesis without need for trailing operators:
+
+{% highlight scala %}
+// right
+val result = (
+    1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 + 19 + 20 + 21 + 22 + 23 + 24 + 25
+        + 26 + 27 + 28 + 29 + 30 + 31 + 32 + 33
+)
+{% endhighlight %}
+
+We prefer wrapping in a set of parenthesis and starting new lines with operators because it's easier to mentally connect operations and arguments (see below).
 
 h2. Single expression
 
