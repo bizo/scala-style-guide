@@ -3,7 +3,7 @@ layout: default
 title: Anonymous Code Blocks
 ---
 
-h2. Always use braces and an indented code block with {{if}}, {{while}}, {{for}}
+h2. Always use braces and an indented code block with @if@, @while@ and @for@
 
 {% highlight scala %}
   // wrong
