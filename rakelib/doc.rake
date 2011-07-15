@@ -57,8 +57,26 @@ task :site=>['_site', PDF] do
 end
 
 # Publish prerequisites to Web site.
-task 'publish'=>:site do
-  fail "todo"
+task :publish => :site do
+  stashed = `git stash` !~ /No local changes to save/
+  sh 'git co gh-pages'
+  sh 'cp -r _site/* .'
+  entries = `git status -s`.split("\n")
+  entries.each do |e|
+    status, file = [e[0..1], e[3..-1]]
+    case status
+    when ' M'
+      `git add #{file}`
+    when '??'
+      `git add #{file}` if File.exist?(File.join('_site', file))
+    else
+      puts "Unexpected status '#{status}' for #{file}"
+    end
+  end
+  sh 'git commit -m "Update site" .'
+  sh 'git push origin gh-pages'
+  sh 'git checkout master'
+  sh 'git stash pop' if stashed
   puts "Done"
 end
 
