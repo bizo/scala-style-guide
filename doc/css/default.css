@@ -180,7 +180,7 @@ th, thead td {
 #content { /* Parent Wrapper for inside boxes */
 /*  display: inline; *//* IE Hack */
   float: left;
-  width: 64em;
+  width: 68em;
   margin-left: 0.3em;
   margin-bottom: 5em;
   word-wrap: break-word; /* prevents container divs from wrapping */
