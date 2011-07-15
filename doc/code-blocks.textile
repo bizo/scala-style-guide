@@ -5,6 +5,8 @@ title: Anonymous Code Blocks
 
 h2. Always use braces and an indented code block with @if@, @while@ and @for@.
 
+&nbps;
+
 {% highlight scala %}
   // wrong
   if (condition) log.info("something interesting happened")
