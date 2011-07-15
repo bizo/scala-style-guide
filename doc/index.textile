@@ -1,0 +1,23 @@
+---
+layout: default
+title: Introduction
+---
+
+blah blah
+
+
+So let's get started.  You can "read the documentation online":index.html, or "download the PDF":bizo-scala-style-guide.pdf.
+
+h2(#principles).  Guiding Principles
+
+* Do no harm.
+* One now is better than two later.
+
+h2(#news).  What's New
+
+
+See the "CHANGELOG":CHANGELOG for full details.
+
+h2(#notices).  Credits & Notices
+
+Copyright (c) 2011 Bizo inc.

@@ -1,0 +1,94 @@
+---
+layout: default
+title: White Space
+---
+
+h2. Spaces over Tabs
+
+No tabs, ever.
+
+If you need to clean up a codebase with tabs, you can type the following which converts all tab occurences to 2 spaces:
+
+{% highlight sh %}
+% find . -name "*.scala" | xargs sed -i 's/\t/  /'
+{% endhighlight %}
+
+
+h2. Trailing whitespace
+
+Try to leave no trailing whitespace behind.
+
+If you need help cleaning a codebase, type the following which strips all trailing whitespace (spaces, tabs):
+
+{% highlight sh %}
+% find . -name "*.scala" | xargs sed -i 's/[ \t]*$//'
+{% endhighlight %}
+
+h2. Spaces around arguments and operators
+
+h3. One space after commas
+
+{% highlight scala %}
+// wrong: missig space after comma
+def foo(a:Any,b:Ref) = ...
+{% endhighlight %}
+
+{% highlight scala %}
+// wrong: extra space before comma
+def foo(a:Any ,b:Ref) = ...
+{% endhighlight %}
+
+{% highlight scala %}
+// right
+def foo(a: Any, b: Ref) = ...
+{% endhighlight %}
+
+h3. One space after colon
+
+{% highlight scala %}
+// wrong: missing space after colon
+def foo(a:Any,b:Ref) = ...
+{% endhighlight %}
+
+{% highlight scala %}
+// wrong: extra space before colon
+def foo(a:Any,b :Ref) = ...
+{% endhighlight %}
+
+{% highlight scala %}
+// right
+def foo(a: Any, b: Ref) = ...
+{% endhighlight %}
+
+h3. Spaces around operators
+
+{% highlight scala %}
+// wrong: missing spaces around operator
+val x = 1+1
+{% endhighlight %}
+
+{% highlight scala %}
+// right
+val x = 1 + 1
+{% endhighlight %}
+
+h3. No spaces after parenthesis
+
+{% highlight scala %}
+// wrong
+val threads = 10 + ( Runtime.getRuntime.availableProcessors * 4 )
+{% endhighlight %}
+
+{% highlight scala %}
+// right
+val threads = 10 + (Runtime.getRuntime.availableProcessors * 4)
+{% endhighlight %}
+
+{% highlight scala %}
+// right
+if (options.has("?") || options.has("h")) {
+  parser.printHelpOn(System.out)
+  System.exit(-1)
+}
+{% endhighlight %}
+

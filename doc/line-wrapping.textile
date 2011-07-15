@@ -1,0 +1,69 @@
+---
+layout: default
+title: Line Wrapping
+---
+
+h2. Indentation
+
+Indentation for wrapped lines is 4 spaces.
+
+h2. Single expression
+
+{% highlight scala %}
+  // wrong
+  private val socketTimeout = (Option(config.getProperty("socketTimeout")) map (_.toInt)
+    getOrElse defaultSocketTimeout)
+{% endhighlight %}
+
+{% highlight scala %}
+  // right
+  private val socketTimeout = (
+      Option(config.getProperty("socketTimeout"))
+          map (_.toInt)
+          getOrElse defaultSocketTimeout
+  )
+{% endhighlight %}
+
+As you can see above, it's a good idea to wrap for each operator-and-arguments pair.
+
+h2. Class definition
+
+{% highlight scala %}
+// wrong
+class SugarcubeServer(val catalog: Catalog, val databases: Seq[String],
+  val config: Properties = new Properties()) extends ThriftServer with JettyServer {
+  ...
+}
+{% endhighlight %}
+
+{% highlight scala %}
+// right
+class SugarcubeServer(
+    val catalog: Catalog,
+    val databases: Seq[String],
+    val config: Properties = new Properties()
+) extends ThriftServer with JettyServer {
+  ...
+}
+{% endhighlight %}
+
+h2. Single expression method body
+
+{% highlight scala %}
+  // preferred
+  def fib(n: Int, b: Int, a: Int): Int = n match {
+    case 0 => a
+    case _ => fib(n - 1, a + b, b)
+  }
+{% endhighlight %}
+
+{% highlight scala %}
+  // hmmm-kay
+  def fib(n: Int, b: Int, a: Int): Int = {
+    n match {
+      case 0 => a
+      case _ => fibonacci(n - 1, a + b, b)
+    }
+  }
+{% endhighlight %}
+

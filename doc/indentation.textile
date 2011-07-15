@@ -1,0 +1,23 @@
+---
+layout: default
+title: Indentation
+---
+
+h2. Blocks
+
+Use 2 spaces to indent code blocks.
+
+{% highlight scala %}
+// wrong (4 spaces)
+class Foo {
+    def bar() = ...
+}
+{% endhighlight %}
+
+{% highlight scala %}
+// right (2 spaces)
+class Foo {
+  def bar() = ...
+}
+{% endhighlight %}
+

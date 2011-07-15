@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+    <title>Bizo Scala Style Guide &mdash; {{ page.title }}</title>
+    <style type='text/css'>
+      @import 'css/default.css';
+      @import 'css/syntax.css';
+    </style>
+    <style media='print' type='text/css'>
+      @import 'css/print.css';
+    </style>
+    <meta content='Bizo Scala Style Guide' name='subject'>
+    <link href='images/favicon.png' rel='shortcut icon'>
+  </head>
+  <body>
+    <div id='wrap'>
+      <div id='header'>
+        <a href='http://bizo.github.com/scala-style-guide/' title="Bizo's Scala Style Guide"><img alt='Bizo' src='images/bizo-logo.png'></a>
+        <div class='tagline'>Conventions over Obfuscation :)</div>
+      </div>
+      <div id='pages'>
+        <ol class='toc'>
+          <li>Start Here
+            <ol class="toc">
+              <li><a href='index.html'>Introduction</a></li>
+            </ol>
+          </li>
+          <li>Guidelines
+            <ol class="toc">
+              <li><a href='white-space.html'>White Space</a></li>
+              <li><a href='indentation.html'>Indentation</a></li>
+              <li><a href='line-wrapping.html'>Line Wrapping</a></li>
+            </ol>
+          </li>
+          <li>Reference
+            <ol class="toc">
+              <li><a href='http://scala-lang.org'>Scala</a></li>
+              <li><a href='http://www.bizo.com'>Bizo</a></li>
+            </ol>
+          </li>
+          <li>
+            <form action='http://www.google.com/cse' id='searchbox_000:xxx'>
+              <input name='cx' type='hidden' value='000:xxx'>
+              <input name='cof' type='hidden' value='FORID:0'>
+              <input name='q' size='20' type='text'>
+              <input name='sa' type='submit' value='Search'>
+              <img alt='Google Custom Search' src='http://www.google.com/coop/images/google_custom_search_smnar.gif'>
+            </form>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <h1 id='{{ page.title | downcase | replace(' ', '_') }}'>{{ page.title }}</h1>
+        {{ content | toc }}
+        {{ content }}
+      </div>
+      <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
+    </div>
+  </body>
+</html>

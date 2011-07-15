@@ -1,0 +1,16 @@
+---
+layout: preface
+---
+
+p(title). Bizo -- Scala Style Guide
+
+<ol class='toc'>
+  <li>"Introduction":introduction.html</li>
+  <li>TODO</li>
+</ol>
+
+
+p(preface).  [small bizo logo]
+
+Copyright (C) 2011 Bizo inc.
+
