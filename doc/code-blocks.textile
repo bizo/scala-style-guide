@@ -1,11 +1,9 @@
 ---
 layout: default
-title: Anonymous Code Blocks
+title: Code Blocks
 ---
 
 h2. Always use braces and an indented code block with @if@, @while@ and @for@.
-
-&nbps;
 
 {% highlight scala %}
   // wrong
@@ -42,7 +40,7 @@ h2. Always use braces and an indented code block with @if@, @while@ and @for@.
   }
 {% endhighlight %}
 
-The only exception to this rule is when an {{if} is used as substitute for the ternary operator (?) -- which is not available in Scala -- and when the entire expression fits in a single line,
+The only exception to this rule is when an @if@ is used as substitute for the ternary operator (@?@) -- which is not available in Scala -- and when the entire expression fits in a single line,
 
 {% highlight scala %}
   // right
