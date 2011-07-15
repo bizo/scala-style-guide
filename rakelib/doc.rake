@@ -40,14 +40,14 @@ rescue LoadError
   end
 end
 
+PDF = 'bizo-scala-style-guide.pdf'
 
 desc "Generate PDF documentation"
-file 'bizo-scala-style-guide.pdf'=>'_site' do |task|
+file PDF => '_site' do |task|
   pages = File.read('_site/preface.html').scan(/<li><a href=['"]([^'"]+)/).flatten.map { |f| "_site/#{f}" }
   sh 'prince', '--input=html', '--no-network', '--log=prince_errors.log', "--output=#{task.name}", '_site/preface.html', *pages
 end
 
-PDF = 'bizo-scala-style-guide.pdf'
 desc "Build a copy of the Web site in the ./_site"
 task :site=>['_site', PDF] do
   cp 'CHANGELOG', '_site'
@@ -58,6 +58,7 @@ end
 
 # Publish prerequisites to Web site.
 task :publish => :site do
+  rm_f PDF
   stashed = `git stash` !~ /No local changes to save/
   sh 'git co gh-pages'
   sh 'cp -r _site/* .'

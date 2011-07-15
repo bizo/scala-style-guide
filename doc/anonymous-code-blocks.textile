@@ -1,0 +1,28 @@
+---
+layout: default
+title: Anonymous Code Blocks
+---
+
+h2. Use parenthesis for anonymous functions with underscore prefix
+
+{% highlight scala %}
+  // preferred
+  val cubes = _localCubes.values flatMap (_.values)
+{% endhighlight %}
+
+{% highlight scala %}
+  // hmmm-kay
+  val cubes = _localCubes.values flatMap { _.values }
+{% endhighlight %}
+
+h2. Use braces and new idented code block for longer anonymous functions
+
+{% highlight scala %}
+  // right
+  val remotePartitions = latest.partitions map { p =>
+    val partition = Json.parse(p.partition)
+    val pv = new PartitionVersion(new Partition(dims, partition), p.version)
+    new RemotePartition(cube.database, cube.cube, pv, path(cubeURL, pv.partitionPath))
+  }
+{% endhighlight %}
+
