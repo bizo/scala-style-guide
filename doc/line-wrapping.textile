@@ -50,6 +50,42 @@ h2. Single expression
 
 As you can see above, it's a good idea to wrap for each operator-and-arguments pair.
 
+Here are more examples,
+
+{% highlight scala %}
+  // passable
+  def foo: List[Int] = (1 to 100).view.map { _ + 3 }.filter { _ > 10 }.flatMap { table.get }.take(3).toList
+{% endhighlight %}
+
+{% highlight scala %}
+  // good
+  def foo: List[Int] = (
+      (1 to 100).view
+          map { _ + 3 }
+          filter { _ > 10 }
+          flatMap { table.get }
+          take (3)
+          toList
+  )
+{% endhighlight %}
+
+{% highlight scala %}
+  // wrong
+  def bar = Console.println(io.Source.fromFile("names.txt").getLines.mkString.split(",").map{x:String => x.slice(1, x.length -1)}.sortBy { x => x}.zipWithIndex.map{t =>{ (t._2 +1)*(t._1.map{_.toChar - "A"(0).toChar + 1}.sum)}}.sum);
+{% endhighlight %}
+
+{% highlight scala %}
+  // better
+  def bar = Console.println(
+      io.Source.fromFile("names.txt").getLines.mkString.split(",")
+      map { x:String => x.slice(1, x.length - 1) }
+      sortBy { x => x}
+      zipWithIndex
+      map { t => { (t._2 +1) * (t._1 map { _.toChar - "A"(0).toChar + 1}.sum) } }
+      sum
+  )
+{% endhighlight %}
+
 h2. Class definition
 
 {% highlight scala %}

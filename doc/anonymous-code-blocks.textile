@@ -15,7 +15,7 @@ h2. Use parenthesis for anonymous functions with underscore prefix
   val cubes = _localCubes.values flatMap { _.values }
 {% endhighlight %}
 
-h2. Use braces and new idented code block for longer anonymous functions
+h2. Use braces and new indented code block for longer anonymous functions
 
 {% highlight scala %}
   // right
