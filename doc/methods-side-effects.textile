@@ -85,7 +85,7 @@ The rule also applies to methods returning Unit.
   }
 {% endhighlight %}
 
-And applies to method definitions in traits,
+And applies to abstract methods, e.g., in traits or abstract classes,
 
 {% highlight scala %}
 // good
