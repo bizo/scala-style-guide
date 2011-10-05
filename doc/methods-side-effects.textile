@@ -52,3 +52,54 @@ One-line methods with side-effects should use braces (instead of using equal),
   }
 {% endhighlight %}
 
+h2. Return types
+
+Public and protected methods should explicitly declare their return type:
+
+{% highlight scala %}
+  // good
+  def compute: Result = {
+    ...
+  }
+{% endhighlight %}
+
+{% highlight scala %}
+  // wrong: no explicit result type
+  def compute = {
+    ...
+  }
+{% endhighlight %}
+
+This practice avoids 1) having class users and inheritors having to guess the actual return type and 2) having the return type inadvertently change and thefore avoid unexpected incompatible class changes.
+
+The rule also applies to methods returning Unit.
+
+{% highlight scala %}
+  // hmmmm, questionable
+  def doSomething {
+    ...
+  }
+
+  // preferred
+  def doSomething: Unit = {
+  }
+{% endhighlight %}
+
+And applies to method definitions in traits,
+
+{% highlight scala %}
+// good
+trait Foo {
+  def compute: Result
+  def doSomething: Unit
+}
+{% endhighlight %}
+
+{% highlight scala %}
+// wrong
+trait Foo {
+  def compute: Result
+  def doSomething()  // missing "Unit"
+}
+{% endhighlight %}
+
