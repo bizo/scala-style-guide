@@ -62,33 +62,39 @@
     <span class="o">...</span>
   <span class="o">}</span>
 </code></pre>
-</div><h2>Use braces and indented code block with <code>if</code>, <code>while</code> and <code>for</code>.</h2>
+</div>
+<h2>Use braces and indented code block with <code>if</code>, <code>while</code> and <code>for</code>.</h2>
 <div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
   <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
   <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
   <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
   <span class="k">else</span>
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;nothing happened, really&quot;</span><span class="o">)</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
   <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
   <span class="o">}</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
   <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;something interesting happened&quot;</span><span class="o">)</span>
   <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;nothing happened, really&quot;</span><span class="o">)</span>
   <span class="o">}</span>
 </code></pre>
-</div><p>One notable exception to this rule is when an <code>if</code> is used as substitute for the ternary operator (<code>?</code>) &#8212; which is not available in Scala &#8212; and when the entire expression fits in a single line,</p>
+</div>
+<p>One notable exception to this rule is when an <code>if</code> is used as substitute for the ternary operator (<code>?</code>) &#8212; which is not available in Scala &#8212; and when the entire expression fits in a single line,</p>
 <div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
   <span class="k">val</span> <span class="n">level</span> <span class="k">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">state</span> <span class="o">==</span> <span class="s">&quot;dev&quot;</span><span class="o">)</span> <span class="n">debugLevel</span> <span class="k">else</span> <span class="n">warnLevel</span>
 </code></pre>

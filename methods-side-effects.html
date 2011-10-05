@@ -54,37 +54,84 @@
       </div>
       <div id='content'>
         <h1 id='methods and side effects'>Methods and Side Effects</h1>
-        <ol class="toc"><li>One-line methods: simple expressions</li><li>Side-effecting methods</li></ol>
+        <ol class="toc"><li>One-line methods: simple expressions</li><li>Side-effecting methods</li><li>Return types</li></ol>
         <h2>One-line methods: simple expressions</h2>
 <p>One-line methods with simple expressions do not require braces:</p>
 <div class="highlight"><pre><code class="scala">  <span class="c1">// preferred</span>
   <span class="k">def</span> <span class="n">hasNext</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">end</span><span class="o">)</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
   <span class="k">def</span> <span class="n">hasNext</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="o">{</span>
     <span class="n">i</span> <span class="o">&lt;</span> <span class="n">end</span>
   <span class="o">}</span>
 </code></pre>
-</div><h2>Side-effecting methods</h2>
+</div>
+<h2>Side-effecting methods</h2>
 <p>One-line methods with side-effects should use braces (instead of using equal),</p>
 <div class="highlight"><pre><code class="scala">  <span class="c1">// preferred</span>
   <span class="k">def</span> <span class="n">next</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
   <span class="o">}</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
   <span class="k">def</span> <span class="n">next</span><span class="o">()</span> <span class="o">{</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">}</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// wrong: no parenthesis indicating effect</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong: no parenthesis indicating effect</span>
   <span class="k">def</span> <span class="n">next</span> <span class="o">{</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">}</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// wrong: equal sign shouldn&#39;t be used for Unit-returning methods</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong: equal sign shouldn&#39;t be used for Unit-returning methods</span>
   <span class="k">def</span> <span class="n">next</span><span class="o">()</span> <span class="k">=</span> <span class="o">{</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">}</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// wrong: equal sign shouldn&#39;t be used for Unit-returning methods</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong: equal sign shouldn&#39;t be used for Unit-returning methods</span>
   <span class="k">def</span> <span class="n">next</span><span class="o">()</span> <span class="k">=</span> <span class="o">{</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
   <span class="o">}</span>
+</code></pre>
+</div>
+<h2>Return types</h2>
+<p>Public and protected methods should explicitly declare their return type:</p>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
+  <span class="k">def</span> <span class="n">compute</span><span class="k">:</span> <span class="kt">Result</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="o">...</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong: no explicit result type</span>
+  <span class="k">def</span> <span class="n">compute</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="o">...</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<p>This practice avoids 1) having class users and inheritors having to guess the actual return type and 2) having the return type inadvertently change and thefore avoid unexpected incompatible class changes.</p>
+<p>The rule also applies to methods returning Unit.</p>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// hmmmm, questionable</span>
+  <span class="k">def</span> <span class="n">doSomething</span> <span class="o">{</span>
+    <span class="o">...</span>
+  <span class="o">}</span>
+
+  <span class="c1">// preferred</span>
+  <span class="k">def</span> <span class="n">doSomething</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<p>And applies to method definitions in traits,</p>
+<div class="highlight"><pre><code class="scala"><span class="c1">// good</span>
+<span class="k">trait</span> <span class="nc">Foo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">compute</span><span class="k">:</span> <span class="kt">Result</span>
+  <span class="k">def</span> <span class="n">doSomething</span><span class="k">:</span> <span class="kt">Unit</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala"><span class="c1">// wrong</span>
+<span class="k">trait</span> <span class="nc">Foo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">compute</span><span class="k">:</span> <span class="kt">Result</span>
+  <span class="k">def</span> <span class="n">doSomething</span><span class="o">()</span>  <span class="c1">// missing &quot;Unit&quot;</span>
+<span class="o">}</span>
 </code></pre>
 </div>
       </div>

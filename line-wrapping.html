@@ -64,32 +64,37 @@
 <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">11</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">13</span> <span class="o">+</span> <span class="mi">14</span> <span class="o">+</span> <span class="mi">15</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">+</span> <span class="mi">17</span> <span class="o">+</span> <span class="mi">18</span> <span class="o">+</span> <span class="mi">19</span> <span class="o">+</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">21</span> <span class="o">+</span> <span class="mi">22</span> <span class="o">+</span> <span class="mi">23</span> <span class="o">+</span>
     <span class="mi">24</span> <span class="o">+</span> <span class="mi">25</span> <span class="o">+</span> <span class="mi">26</span> <span class="o">+</span> <span class="mi">27</span> <span class="o">+</span> <span class="mi">28</span> <span class="o">+</span> <span class="mi">29</span> <span class="o">+</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">31</span> <span class="o">+</span> <span class="mi">32</span> <span class="o">+</span> <span class="mi">33</span>
 </code></pre>
-</div><p>or it&#8217;s possible to wrap everything in a set of parenthesis without need for trailing operators:</p>
+</div>
+<p>or it&#8217;s possible to wrap everything in a set of parenthesis without need for trailing operators:</p>
 <div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
 <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="o">(</span>
     <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">11</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">13</span> <span class="o">+</span> <span class="mi">14</span> <span class="o">+</span> <span class="mi">15</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">+</span> <span class="mi">17</span> <span class="o">+</span> <span class="mi">18</span> <span class="o">+</span> <span class="mi">19</span> <span class="o">+</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">21</span> <span class="o">+</span> <span class="mi">22</span> <span class="o">+</span> <span class="mi">23</span> <span class="o">+</span> <span class="mi">24</span> <span class="o">+</span> <span class="mi">25</span>
         <span class="o">+</span> <span class="mi">26</span> <span class="o">+</span> <span class="mi">27</span> <span class="o">+</span> <span class="mi">28</span> <span class="o">+</span> <span class="mi">29</span> <span class="o">+</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">31</span> <span class="o">+</span> <span class="mi">32</span> <span class="o">+</span> <span class="mi">33</span>
 <span class="o">)</span>
 </code></pre>
-</div><p>We prefer wrapping in a set of parenthesis and starting new lines with operators because it&#8217;s easier to mentally connect operations and arguments (see below).</p>
+</div>
+<p>We prefer wrapping in a set of parenthesis and starting new lines with operators because it&#8217;s easier to mentally connect operations and arguments (see below).</p>
 <h2>Single expression</h2>
 <div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
   <span class="k">private</span> <span class="k">val</span> <span class="n">socketTimeout</span> <span class="k">=</span> <span class="o">(</span><span class="nc">Option</span><span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;socketTimeout&quot;</span><span class="o">))</span> <span class="n">map</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
     <span class="n">getOrElse</span> <span class="n">defaultSocketTimeout</span><span class="o">)</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
   <span class="k">private</span> <span class="k">val</span> <span class="n">socketTimeout</span> <span class="k">=</span> <span class="o">(</span>
       <span class="nc">Option</span><span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;socketTimeout&quot;</span><span class="o">))</span>
           <span class="n">map</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">toInt</span><span class="o">)</span>
           <span class="n">getOrElse</span> <span class="n">defaultSocketTimeout</span>
   <span class="o">)</span>
 </code></pre>
-</div><p>As you can see above, it&#8217;s a good idea to wrap for each operator-and-arguments pair.</p>
+</div>
+<p>As you can see above, it&#8217;s a good idea to wrap for each operator-and-arguments pair.</p>
 <p>Here are more examples,</p>
 <div class="highlight"><pre><code class="scala">  <span class="c1">// passable</span>
   <span class="k">def</span> <span class="n">foo</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="o">).</span><span class="n">view</span><span class="o">.</span><span class="n">map</span> <span class="o">{</span> <span class="k">_</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">}.</span><span class="n">filter</span> <span class="o">{</span> <span class="k">_</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">}.</span><span class="n">flatMap</span> <span class="o">{</span> <span class="n">table</span><span class="o">.</span><span class="n">get</span> <span class="o">}.</span><span class="n">take</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="n">toList</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
   <span class="k">def</span> <span class="n">foo</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span>
       <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="o">).</span><span class="n">view</span>
           <span class="n">map</span> <span class="o">{</span> <span class="k">_</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">}</span>
@@ -99,10 +104,12 @@
           <span class="n">toList</span>
   <span class="o">)</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
   <span class="k">def</span> <span class="n">bar</span> <span class="k">=</span> <span class="nc">Console</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&quot;names.txt&quot;</span><span class="o">).</span><span class="n">getLines</span><span class="o">.</span><span class="n">mkString</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">).</span><span class="n">map</span><span class="o">{</span><span class="n">x</span><span class="k">:</span><span class="kt">String</span> <span class="o">=&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">slice</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">x</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span><span class="mi">1</span><span class="o">)}.</span><span class="n">sortBy</span> <span class="o">{</span> <span class="n">x</span> <span class="k">=&gt;</span> <span class="n">x</span><span class="o">}.</span><span class="n">zipWithIndex</span><span class="o">.</span><span class="n">map</span><span class="o">{</span><span class="n">t</span> <span class="o">=&gt;{</span> <span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span><span class="mi">1</span><span class="o">)*(</span><span class="n">t</span><span class="o">.</span><span class="n">_1</span><span class="o">.</span><span class="n">map</span><span class="o">{</span><span class="n">_</span><span class="o">.</span><span class="n">toChar</span> <span class="o">-</span> <span class="s">&quot;A&quot;</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="n">toChar</span> <span class="o">+</span> <span class="mi">1</span><span class="o">}.</span><span class="n">sum</span><span class="o">)}}.</span><span class="n">sum</span><span class="o">);</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// better</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// better</span>
   <span class="k">def</span> <span class="n">bar</span> <span class="k">=</span> <span class="nc">Console</span><span class="o">.</span><span class="n">println</span><span class="o">(</span>
       <span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&quot;names.txt&quot;</span><span class="o">).</span><span class="n">getLines</span><span class="o">.</span><span class="n">mkString</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">)</span>
       <span class="n">map</span> <span class="o">{</span> <span class="n">x</span><span class="k">:</span><span class="kt">String</span> <span class="o">=&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">slice</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">x</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">}</span>
@@ -112,14 +119,16 @@
       <span class="n">sum</span>
   <span class="o">)</span>
 </code></pre>
-</div><h2>Class definition</h2>
+</div>
+<h2>Class definition</h2>
 <div class="highlight"><pre><code class="scala"><span class="c1">// wrong</span>
 <span class="k">class</span> <span class="nc">SugarcubeServer</span><span class="o">(</span><span class="k">val</span> <span class="n">catalog</span><span class="k">:</span> <span class="kt">Catalog</span><span class="o">,</span> <span class="k">val</span> <span class="n">databases</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span>
   <span class="k">val</span> <span class="n">config</span><span class="k">:</span> <span class="kt">Properties</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Properties</span><span class="o">())</span> <span class="k">extends</span> <span class="nc">ThriftServer</span> <span class="k">with</span> <span class="nc">JettyServer</span> <span class="o">{</span>
   <span class="o">...</span>
 <span class="o">}</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
+</div>
+<div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
 <span class="k">class</span> <span class="nc">SugarcubeServer</span><span class="o">(</span>
     <span class="k">val</span> <span class="n">catalog</span><span class="k">:</span> <span class="kt">Catalog</span><span class="o">,</span>
     <span class="k">val</span> <span class="n">databases</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span>
@@ -128,14 +137,16 @@
   <span class="o">...</span>
 <span class="o">}</span>
 </code></pre>
-</div><h2>Single expression method body</h2>
+</div>
+<h2>Single expression method body</h2>
 <div class="highlight"><pre><code class="scala">  <span class="c1">// preferred</span>
   <span class="k">def</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">n</span> <span class="k">match</span> <span class="o">{</span>
     <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="n">a</span>
     <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
   <span class="o">}</span>
 </code></pre>
-</div><div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
   <span class="k">def</span> <span class="n">fib</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
     <span class="n">n</span> <span class="k">match</span> <span class="o">{</span>
       <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="n">a</span>
