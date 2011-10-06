@@ -1,0 +1,82 @@
+---
+layout: default
+title: Dots vs Spaces
+---
+
+h1. Use dots for side-effecting methods
+
+{% highlight sh %}
+  // good
+  missiles.fire()
+{% endhighlight %}
+
+{% highlight sh %}
+  // don't even think about it!
+  missiles fire()
+{% endhighlight %}
+
+h1. Use dots for consecutive accessors
+
+{% highlight sh %}
+  // good
+  for (c <- competitors.view.reverse) {
+    allocate(c)
+  }
+{% endhighlight %}
+
+
+{% highlight sh %}
+  // nope.
+  for (c <- competitors.view reverse) {
+    allocate(c)
+  }
+{% endhighlight %}
+
+
+{% highlight sh %}
+  // what did I tell you about spaces?
+  for (c <- competitors view reverse) {
+    allocate(c)
+  }
+{% endhighlight %}
+
+h1. Use spaces to separate pure operations
+
+{% highlight sh %}
+  // good
+  val evenlyDistributed = pref.selectors zip distribute(pref.quantity, avails)
+{% endhighlight %}
+
+{% highlight sh %}
+  // good
+  log.info("Distribution: " + (values mkString "\n"))
+{% endhighlight %}
+
+{% highlight sh %}
+  // good
+  selectors map getOrCreateNode map { _.available(priority) }
+{% endhighlight %}
+
+{% highlight sh %}
+  // wrong:  get is an accessor, not an operation
+  customers get selectedId
+{% endhighlight %}
+
+{% highlight sh %}
+  // wrong:  available is an accessor
+  //         (an operation is verb, not an adjective)
+  customers available today
+{% endhighlight %}
+
+h1. When in doubt, try to reduce the line noise
+
+{% highlight sh %}
+  // mmm-kay
+  overflow -= (exclude map { _.available(priority) } sum)
+{% endhighlight %}
+
+{% highlight sh %}
+  // better: slightly less noisy since dots are less noisy than parenthesis
+  overflow -= exclude.map { _.available(priority) }.sum
+{% endhighlight %}
+
