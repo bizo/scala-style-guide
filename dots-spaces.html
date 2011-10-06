@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+    <title>Bizo Scala Style Guide &mdash; Dots vs Spaces</title>
+    <style type='text/css'>
+      @import 'css/default.css';
+      @import 'css/syntax.css';
+    </style>
+    <style media='print' type='text/css'>
+      @import 'css/print.css';
+    </style>
+    <meta content='Bizo Scala Style Guide' name='subject'>
+    <link href='images/favicon.png' rel='shortcut icon'>
+  </head>
+  <body>
+    <div id='wrap'>
+      <div id='header'>
+        <a href='http://bizo.github.com/scala-style-guide/' title="Bizo's Scala Style Guide"><img alt='Bizo' src='images/bizo-logo.png'></a>
+        <div class='tagline'>Conventions over Obfuscation :)</div>
+      </div>
+      <div id='pages'>
+        <ol class='toc'>
+          <li>Start Here
+            <ol class="toc">
+              <li><a href='index.html'>Introduction</a></li>
+            </ol>
+          </li>
+          <li>Guidelines
+            <ol class="toc">
+              <li><a href='white-space.html'>White Space</a></li>
+              <li><a href='indentation.html'>Indentation</a></li>
+              <li><a href='line-wrapping.html'>Line Wrapping</a></li>
+              <li><a href='methods-side-effects.html'>Methods &amp; Side Effects</a></li>
+              <li><a href='code-blocks.html'>Code Blocks</a></li>
+              <li><a href='anonymous-code-blocks.html'>Anonymous Code Blocks</a></li>
+              <li><a href='dots-spaces.html'>Dots versus Spaces</a></li>
+            </ol>
+          </li>
+          <li>Reference
+            <ol class="toc">
+              <li><a href='http://scala-lang.org'>Scala</a></li>
+              <li><a href='http://www.bizo.com'>Bizo</a></li>
+            </ol>
+          </li>
+          <li>
+            <form action='http://www.google.com/cse' id='searchbox_000:xxx'>
+              <input name='cx' type='hidden' value='000:xxx'>
+              <input name='cof' type='hidden' value='FORID:0'>
+              <input name='q' size='20' type='text'>
+              <input name='sa' type='submit' value='Search'>
+              <img alt='Google Custom Search' src='http://www.google.com/coop/images/google_custom_search_smnar.gif'>
+            </form>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <h1 id='dots vs spaces'>Dots vs Spaces</h1>
+        <ol class="toc"></ol>
+        <h1>Use dots for side-effecting methods</h1>
+<div class="highlight"><pre><code class="sh">  // good
+  missiles.fire<span class="o">()</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // don<span class="err">&#39;</span>t even think about it!
+  missiles fire<span class="o">()</span>
+</code></pre>
+</div>
+<h1>Use dots for consecutive accessors</h1>
+<div class="highlight"><pre><code class="sh">  // good
+  <span class="k">for</span> <span class="o">(</span>c &lt;- competitors.view.reverse<span class="o">)</span> <span class="o">{</span>
+    allocate<span class="o">(</span>c<span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // nope.
+  <span class="k">for</span> <span class="o">(</span>c &lt;- competitors.view reverse<span class="o">)</span> <span class="o">{</span>
+    allocate<span class="o">(</span>c<span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // what did I tell you about spaces?
+  <span class="k">for</span> <span class="o">(</span>c &lt;- competitors view reverse<span class="o">)</span> <span class="o">{</span>
+    allocate<span class="o">(</span>c<span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<h1>Use spaces to separate pure operations</h1>
+<div class="highlight"><pre><code class="sh">  // good
+  val <span class="nv">evenlyDistributed</span> <span class="o">=</span> pref.selectors zip distribute<span class="o">(</span>pref.quantity, avails<span class="o">)</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // good
+  log.info<span class="o">(</span><span class="s2">&quot;Distribution: &quot;</span> + <span class="o">(</span>values mkString <span class="s2">&quot;\n&quot;</span><span class="o">))</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // good
+  selectors map getOrCreateNode map <span class="o">{</span> _.available<span class="o">(</span>priority<span class="o">)</span> <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // wrong:  get is an accessor, not an operation
+  customers get selectedId
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // wrong:  available is an accessor
+  //         <span class="o">(</span>an operation is verb, not an adjective<span class="o">)</span>
+  customers available today
+</code></pre>
+</div>
+<h1>When in doubt, try to reduce the line noise</h1>
+<div class="highlight"><pre><code class="sh">  // mmm-kay
+  overflow -<span class="o">=</span> <span class="o">(</span>exclude map <span class="o">{</span> _.available<span class="o">(</span>priority<span class="o">)</span> <span class="o">}</span> sum<span class="o">)</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // better: slightly less noisy since dots are less noisy than parenthesis
+  overflow -<span class="o">=</span> exclude.map <span class="o">{</span> _.available<span class="o">(</span>priority<span class="o">)</span> <span class="o">}</span>.sum
+</code></pre>
+</div>
+      </div>
+      <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
+    </div>
+  </body>
+</html>
