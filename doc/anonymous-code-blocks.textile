@@ -3,7 +3,7 @@ layout: default
 title: Anonymous Code Blocks
 ---
 
-h2. Use parenthesis for anonymous functions with underscore prefix
+h2. Use parenthesis for pure anonymous functions with placeholder syntax (underscore)
 
 {% highlight scala %}
   // preferred
@@ -13,6 +13,20 @@ h2. Use parenthesis for anonymous functions with underscore prefix
 {% highlight scala %}
   // hmmm-kay
   val cubes = _localCubes.values flatMap { _.values }
+{% endhighlight %}
+
+h2. Use braces for side-effecting anonymous functions with placeholder syntax (underscore)
+
+{% highlight scala %}
+  // good
+  nodes.valuesIterator foreach { _.delete() }
+{% endhighlight %}
+
+This produces clearer grouping and delimiter-balance than consecutive parenthesis.
+
+{% highlight scala %}
+  // wrong
+  nodes.valuesIterator foreach (_.delete())
 {% endhighlight %}
 
 h2. Use braces and new indented code block for longer anonymous functions
@@ -25,4 +39,6 @@ h2. Use braces and new indented code block for longer anonymous functions
     new RemotePartition(cube.database, cube.cube, pv, path(cubeURL, pv.partitionPath))
   }
 {% endhighlight %}
+
+
 
