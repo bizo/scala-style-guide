@@ -3,6 +3,18 @@ layout: default
 title: Dots vs Spaces
 ---
 
+h1. Methods with a single block argument should not use dots (regardless of side-effects)
+
+{% highlight sh %}
+  // good
+  missiles foreach { missile => missile.fire() }
+{% endhighlight %}
+
+{% highlight sh %}
+  // not on this planet!
+  missiles.foreach { missile => missile.fire() }
+{% endhighlight %}
+
 h1. Use dots for side-effecting methods
 
 {% highlight sh %}
@@ -79,4 +91,3 @@ h1. When in doubt, try to reduce the line noise
   // better: slightly less noisy since dots are less noisy than parenthesis
   overflow -= exclude.map { _.available(priority) }.sum
 {% endhighlight %}
-
