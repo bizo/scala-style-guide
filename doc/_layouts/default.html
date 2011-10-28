@@ -54,7 +54,7 @@
         </ol>
       </div>
       <div id='content'>
-        <h1 id='{{ page.title | downcase | replace(' ', '_') }}'>{{ page.title }}</h1>
+        <h1 id='{{ page.title | downcase | replace(' ', '_') }}'>{{ page.title }} <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/{{ page.filename }}">[Edit]</a></h1>
         {{ content | toc }}
         {{ content }}
       </div>
