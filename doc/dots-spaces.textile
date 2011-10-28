@@ -3,33 +3,34 @@ layout: default
 title: Dots vs Spaces
 ---
 
-h2. Methods with a single block argument should not use dots (regardless of side-effects)
+h2. Use spaces when passing blocks delimited with curly braces
+>>>>>>> cosmetics
 
-{% highlight sh %}
+{% highlight scala %}
   // good
   missiles foreach { missile => missile.fire() }
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight scala %}
   // not on this planet!
   missiles.foreach { missile => missile.fire() }
 {% endhighlight %}
 
 h2. Use dots for side-effecting methods
 
-{% highlight sh %}
+{% highlight scala %}
   // good
   missiles.fire()
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight scala %}
   // don't even think about it!
   missiles fire()
 {% endhighlight %}
 
 h2. Use dots for consecutive accessors
 
-{% highlight sh %}
+{% highlight scala %}
   // good
   for (c <- competitors.view.reverse) {
     allocate(c)
@@ -37,7 +38,7 @@ h2. Use dots for consecutive accessors
 {% endhighlight %}
 
 
-{% highlight sh %}
+{% highlight scala %}
   // nope.
   for (c <- competitors.view reverse) {
     allocate(c)
@@ -45,7 +46,7 @@ h2. Use dots for consecutive accessors
 {% endhighlight %}
 
 
-{% highlight sh %}
+{% highlight scala %}
   // what did I tell you about spaces?
   for (c <- competitors view reverse) {
     allocate(c)
@@ -54,27 +55,27 @@ h2. Use dots for consecutive accessors
 
 h2. Use spaces to separate pure operations
 
-{% highlight sh %}
+{% highlight scala %}
   // good
   val evenlyDistributed = pref.selectors zip distribute(pref.quantity, avails)
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight scala %}
   // good
   log.info("Distribution: " + (values mkString "\n"))
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight scala %}
   // good
   selectors map getOrCreateNode map { _.available(priority) }
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight scala %}
   // wrong:  get is an accessor, not an operation
   customers get selectedId
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight scala %}
   // wrong:  available is an accessor
   //         (an operation is verb, not an adjective)
   customers available today
@@ -82,12 +83,12 @@ h2. Use spaces to separate pure operations
 
 h2. When in doubt, try to reduce the line noise
 
-{% highlight sh %}
+{% highlight scala %}
   // mmm-kay
   overflow -= (exclude map { _.available(priority) } sum)
 {% endhighlight %}
 
-{% highlight sh %}
+{% highlight scala %}
   // better: slightly less noisy since dots are less noisy than parenthesis
   overflow -= exclude.map { _.available(priority) }.sum
 {% endhighlight %}
