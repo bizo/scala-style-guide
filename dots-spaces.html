@@ -54,9 +54,18 @@
         </ol>
       </div>
       <div id='content'>
-        <h1 id='dots vs spaces'>Dots vs Spaces</h1>
+        <h1 id='dots vs spaces'>Dots vs Spaces <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/dots-spaces.textile">[Edit]</a></h1>
         <ol class="toc"></ol>
-        <h1>Use dots for side-effecting methods</h1>
+        <h1>Methods with a single block argument should not use dots (regardless of side-effects)</h1>
+<div class="highlight"><pre><code class="sh">  // good
+  missiles foreach <span class="o">{</span> <span class="nv">missile</span> <span class="o">=</span>&gt; missile.fire<span class="o">()</span> <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sh">  // not on this planet!
+  missiles.foreach <span class="o">{</span> <span class="nv">missile</span> <span class="o">=</span>&gt; missile.fire<span class="o">()</span> <span class="o">}</span>
+</code></pre>
+</div>
+<h1>Use dots for side-effecting methods</h1>
 <div class="highlight"><pre><code class="sh">  // good
   missiles.fire<span class="o">()</span>
 </code></pre>
