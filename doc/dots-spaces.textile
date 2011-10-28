@@ -3,7 +3,7 @@ layout: default
 title: Dots vs Spaces
 ---
 
-h1. Methods with a single block argument should not use dots (regardless of side-effects)
+h2. Methods with a single block argument should not use dots (regardless of side-effects)
 
 {% highlight sh %}
   // good
@@ -15,7 +15,7 @@ h1. Methods with a single block argument should not use dots (regardless of side
   missiles.foreach { missile => missile.fire() }
 {% endhighlight %}
 
-h1. Use dots for side-effecting methods
+h2. Use dots for side-effecting methods
 
 {% highlight sh %}
   // good
@@ -27,7 +27,7 @@ h1. Use dots for side-effecting methods
   missiles fire()
 {% endhighlight %}
 
-h1. Use dots for consecutive accessors
+h2. Use dots for consecutive accessors
 
 {% highlight sh %}
   // good
@@ -52,7 +52,7 @@ h1. Use dots for consecutive accessors
   }
 {% endhighlight %}
 
-h1. Use spaces to separate pure operations
+h2. Use spaces to separate pure operations
 
 {% highlight sh %}
   // good
@@ -80,7 +80,7 @@ h1. Use spaces to separate pure operations
   customers available today
 {% endhighlight %}
 
-h1. When in doubt, try to reduce the line noise
+h2. When in doubt, try to reduce the line noise
 
 {% highlight sh %}
   // mmm-kay
