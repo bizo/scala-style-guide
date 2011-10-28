@@ -4,7 +4,6 @@ title: Dots vs Spaces
 ---
 
 h2. Use spaces when passing blocks delimited with curly braces
->>>>>>> cosmetics
 
 {% highlight scala %}
   // good
