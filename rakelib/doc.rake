@@ -30,8 +30,8 @@ begin
 rescue LoadError
   puts "jekyll gem required to generate the Web site. You can install it by running rake doc:setup"
   task 'doc:setup' do
-    install_gem 'jekyll', :version=>'0.10.0'
-    install_gem 'jekylltask', :version=>'1.0.2'
+    install_gem 'jekyll', :version=>'0.11.0'
+    install_gem 'jekylltask', :version=>'1.1.0'
     if `pygmentize -V`.empty?
       args = %w{easy_install Pygments}
       args.unshift 'sudo' unless Config::CONFIG['host_os'] =~ /windows/
@@ -49,7 +49,7 @@ file PDF => '_site' do |task|
 end
 
 desc "Build a copy of the Web site in the ./_site"
-task :site=>['_site', PDF] do
+task :site=>[:jekyll, '_site', PDF] do
   cp 'CHANGELOG', '_site'
   cp PDF, '_site'
   fail 'No PDF in site directory' unless File.exist?("_site/#{PDF}")
@@ -60,6 +60,7 @@ end
 task :publish => :site do
   rm_f PDF
   stashed = `git stash` !~ /No local changes to save/
+  sh 'git push origin gh-pages'
   sh 'git co gh-pages'
   sh 'cp -r _site/* .'
   entries = `git status -s`.split("\n")
