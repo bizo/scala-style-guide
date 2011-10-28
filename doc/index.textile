@@ -7,11 +7,8 @@ Did you know? You can "read the documentation online":index.html, or "download t
 
 h2(#principles).  Guiding Principles
 
-* TODO
-
-h2(#news).  What's New
-
-See the "CHANGELOG":CHANGELOG for full details.
+* Readability > Writability
+* Readability > Rules
 
 h2(#notices).  Credits & Notices
 
