@@ -1,0 +1,70 @@
+--- 
+layout: default
+title: Files
+---
+
+h2. The Standard Case
+
+Files should contain a single logical compilation unit, meaning a class, trait or object. One exception to this
+guideline is for classes or traits which have companion objects. Companion objects should be grouped with their
+corresponding class or trait in the same file.
+
+{% highlight scala %} 
+package com.bizo.file
+
+class BizoFile { ... }
+
+object BizoFile { ... } 
+{% endhighlight %}
+
+h2. Other Exceptions
+
+Other than the case of companion objects, there are two other exceptions to this rule.
+
+First, multiple compilation units should be placed in the same file if this is *required* by the Scala language. One
+common example is that of a sealed trait and several sub-classes or sub-objects.
+
+{% highlight scala %} 
+package com.bizo.teams
+
+sealed trait BizoTeam
+
+case object AppsTeam extends BizoTeam 
+case object DataTeam extends BizoTeam 
+case object InfrastructureTeam extends BizoTeam 
+
+case class AdHocTeam(name: String) extends BizoTeam 
+{% endhighlight %}
+
+Second, multiple compilation units should be placed in the same file is when multiple classes logically form a single,
+cohesive group, sharing concepts to the point where maintenance is served by containing them within a single file.
+These situations are harder to predict than the aforementioned sealed supertype exception.  Generally speaking, if it is
+easier to perform long-term maintenance and development on several units in a single file rather than spread across
+multiple, then such an organizational strategy should be preferred for these classes.  However, keep in mind that when
+multiple units are contained within a single file, it is often more difficult to find specific units when it comes time
+to make changes.
+
+h2. Naming Conventions
+
+The goal of a filename is to both give an indication of what is inside the file and assist a developer in knowing where
+to look for the units contained in that file.  If the name does not assist in understanding what is in the file, the
+developer should either pick a more explanatory name or split the contents into multiple files.
+
+Single-unit files and files containing only a trait/class and its companion should obey the Java naming convention.
+i.e., the file containing the BizoFile class (and companion object) should be named BizoFile.scala.
+
+Multiple-unit files should be given camelCase names with a lower-case first letter.  This convention differentiates
+multi- from single-unit files, greatly easing the process of finding declarations.  If the file contains a single
+obvious type that is more significant than the others (e.g. a root type like the BizoTeam trait for the example above),
+the file should be named after that type (e.g. bizoTeam.scala).  If there is no dominant type in the file, filenames
+should be descriptive of the logical property shared by all units within (e.g. ast.scala).
+
+Not being able to think of a good name is a good code smell for having unrelated concepts in a single file!
+
+In all cases, files should be placed in the directory corresponding to the package of the primary type(s) that they
+contain.  e.g., the bizoTeam.scala file should be placed in com/bizo/teams.
+
+In short, in the general case, the Java file naming and positioning conventions should be preferred, despite the fact
+that Scala allows for greater flexibility in this regard.  Only place multiple compilation units in a single file if it
+is required by the language or if the types are so logically interconnected that having them in multiple files greatly
+increases maintainability.
