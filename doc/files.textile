@@ -3,9 +3,14 @@ layout: default
 title: Files
 ---
 
+Types should be organized to promote long-term maintenance and development.  For single-unit files (including the case
+of a class/trait and its companion), Java naming and placement conventions should be preferred, despite Scala allowing
+for greater flexibility in this regard.  Multi-unit files should only be used when required by the language or when the
+types are sufficiently related that placing them in a single file promotes maintainability.
+
 h2. The Standard Case
 
-Files should contain a single logical compilation unit, meaning a class, trait or object. One exception to this
+Files should contain a single top-level definition, meaning an un-nested class, trait or object. One exception to this
 guideline is for classes or traits which have companion objects. Companion objects should be grouped with their
 corresponding class or trait in the same file.
 
@@ -36,7 +41,7 @@ case object InfrastructureTeam extends BizoTeam
 case class AdHocTeam(name: String) extends BizoTeam 
 {% endhighlight %}
 
-Second, multiple compilation units should be placed in the same file is when multiple classes logically form a single,
+Second, multiple compilation units should be placed in the same file when multiple classes logically form a single,
 cohesive group, sharing concepts to the point where maintenance is served by containing them within a single file.
 These situations are harder to predict than the aforementioned sealed supertype exception.  Generally speaking, if it is
 easier to perform long-term maintenance and development on several units in a single file rather than spread across
@@ -54,17 +59,15 @@ Single-unit files and files containing only a trait/class and its companion shou
 i.e., the file containing the BizoFile class (and companion object) should be named BizoFile.scala.
 
 Multiple-unit files should be given camelCase names with a lower-case first letter.  This convention differentiates
-multi- from single-unit files, greatly easing the process of finding declarations.  If the file contains a single
+multi-unit from single-unit files, greatly easing the process of finding declarations.  If the file contains a single
 obvious type that is more significant than the others (e.g. a root type like the BizoTeam trait for the example above),
 the file should be named after that type (e.g. bizoTeam.scala).  If there is no dominant type in the file, filenames
 should be descriptive of the logical property shared by all units within (e.g. ast.scala).
 
-Not being able to think of a good name is a good code smell for having unrelated concepts in a single file!
+Files whose dominant (or only) type is the package object should be named "package.scala".
+
+Not being able to think of a good filename is a strong indication that the file contains unrelated concepts!
 
 In all cases, files should be placed in the directory corresponding to the package of the primary type(s) that they
-contain.  e.g., the bizoTeam.scala file should be placed in com/bizo/teams.
-
-In short, in the general case, the Java file naming and positioning conventions should be preferred, despite the fact
-that Scala allows for greater flexibility in this regard.  Only place multiple compilation units in a single file if it
-is required by the language or if the types are so logically interconnected that having them in multiple files greatly
-increases maintainability.
+contain.  e.g., the bizoTeam.scala file should be placed in com/bizo/teams.  As packages should also group related
+classes together, we expect that most files will contain only types living under this primary package.
