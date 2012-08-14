@@ -5,14 +5,16 @@ title: Files
 
 Types should be organized to promote long-term maintenance and development.  For single-unit files (including the case
 of a class/trait and its companion), Java naming and placement conventions should be preferred, despite Scala allowing
-for greater flexibility in this regard.  Multi-unit files should only be used when required by the language or when the
-types are sufficiently related that placing them in a single file promotes maintainability.
+for greater flexibility in this regard.  Developers may optionally choose to use multi-unit files when required by the
+language or when placing the types in a single file promotes maintainability.
 
-h2. The Standard Case
+h2. Single-Unit files.
 
-Files should contain a single top-level definition, meaning an un-nested class, trait or object. One exception to this
-guideline is for classes or traits which have companion objects. Companion objects should be grouped with their
-corresponding class or trait in the same file.
+Generally, "single-unit" files include those containing a single top-level definition, meaning an un-nested class, trait
+or object.  Additionally, this section also applies to classes or traits that have companion objects.  Companion objects
+should be grouped with their corresponding class or trait in the same file.
+
+Using single-unit files is always allowed as a default organizational choice.
 
 {% highlight scala %} 
 package com.bizo.file
@@ -22,9 +24,10 @@ class BizoFile { ... }
 object BizoFile { ... } 
 {% endhighlight %}
 
-h2. Other Exceptions
+h2. Multi-Unit files.
 
-Other than the case of companion objects, there are two other exceptions to this rule.
+Other than the case of companion objects, there are two cases where developers may choose to place multiple units in a
+single file.
 
 First, multiple compilation units should be placed in the same file if this is *required* by the Scala language. One
 common example is that of a sealed trait and several sub-classes or sub-objects.
@@ -55,7 +58,7 @@ The goal of a filename is to both give an indication of what is inside the file 
 to look for the units contained in that file.  If the name does not assist in understanding what is in the file, the
 developer should either pick a more explanatory name or split the contents into multiple files.
 
-Single-unit files and files containing only a trait/class and its companion should obey the Java naming convention.
+Single-unit files (including those containing only a trait/class and its companion) should obey the Java naming convention.
 i.e., the file containing the BizoFile class (and companion object) should be named BizoFile.scala.
 
 Multiple-unit files should be given camelCase names with a lower-case first letter.  This convention differentiates
