@@ -61,7 +61,7 @@ task :publish => :site do
   rm_f PDF
   stashed = `git stash` !~ /No local changes to save/
   sh 'git push origin master'
-  sh 'git co gh-pages'
+  sh 'git checkout gh-pages'
   sh 'cp -r _site/* .'
   entries = `git status -s`.split("\n")
   entries.each do |e|
