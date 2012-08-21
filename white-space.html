@@ -55,72 +55,37 @@
         </ol>
       </div>
       <div id='content'>
-        <h1 id='white space'>White Space <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/white-space.textile">[Edit]</a></h1>
-        <ol class="toc"><li>Spaces over Tabs</li><li>Trailing whitespace</li><li>Spaces around arguments and operators</li></ol>
+        <h1 id='white space'>White Space <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/">[Edit]</a></h1>
+        <ol class="toc"><li>Spaces over Tabs</li><li>Spaces around arguments and operators</li></ol>
         <h2>Spaces over Tabs</h2>
 <p>No tabs, ever.</p>
 <p>If you need to clean up a codebase with tabs, you can type the following which converts all tab occurences to 2 spaces:</p>
-<div class="highlight"><pre><code class="sh">% find . -name <span class="s2">&quot;*.scala&quot;</span> | xargs sed -i <span class="s1">&#39;s/\t/  /&#39;</span>
-</code></pre>
-</div>
-<h2>Trailing whitespace</h2>
-<p>Try to leave no trailing whitespace behind.</p>
-<p>If you need help cleaning a codebase, type the following which strips all trailing whitespace (spaces, tabs):</p>
-<div class="highlight"><pre><code class="sh">% find . -name <span class="s2">&quot;*.scala&quot;</span> | xargs sed -i <span class="s1">&#39;s/[ \t]*$//&#39;</span>
-</code></pre>
-</div>
-<h2>Spaces around arguments and operators</h2>
+</notextile>
+
+
+h2. Trailing whitespace
+
+Try to leave no trailing whitespace behind.
+
+If you need help cleaning a codebase, type the following which strips all trailing whitespace (spaces, tabs):
+
+<notextile><h2>Spaces around arguments and operators</h2>
 <h3>One space after commas</h3>
-<div class="highlight"><pre><code class="scala"><span class="c1">// wrong: missing space after comma</span>
-<span class="k">def</span> <span class="n">foo</span><span class="o">(</span><span class="n">a</span><span class="k">:</span><span class="kt">Any</span><span class="o">,</span><span class="n">b</span><span class="k">:</span><span class="kt">Ref</span><span class="o">)</span> <span class="k">=</span> <span class="o">...</span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="scala"><span class="c1">// wrong: extra space before comma</span>
-<span class="k">def</span> <span class="n">foo</span><span class="o">(</span><span class="n">a</span><span class="k">:</span><span class="kt">Any</span> <span class="o">,</span><span class="n">b</span><span class="k">:</span><span class="kt">Ref</span><span class="o">)</span> <span class="k">=</span> <span class="o">...</span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
-<span class="k">def</span> <span class="n">foo</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Any</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Ref</span><span class="o">)</span> <span class="k">=</span> <span class="o">...</span>
-</code></pre>
-</div>
-<h3>One space after colon</h3>
-<div class="highlight"><pre><code class="scala"><span class="c1">// wrong: missing space after colon</span>
-<span class="k">def</span> <span class="n">foo</span><span class="o">(</span><span class="n">a</span><span class="k">:</span><span class="kt">Any</span><span class="o">,</span><span class="n">b</span><span class="k">:</span><span class="kt">Ref</span><span class="o">)</span> <span class="k">=</span> <span class="o">...</span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="scala"><span class="c1">// wrong: extra space before colon</span>
-<span class="k">def</span> <span class="n">foo</span><span class="o">(</span><span class="n">a</span><span class="k">:</span><span class="kt">Any</span><span class="o">,</span><span class="n">b</span> <span class="k">:</span><span class="kt">Ref</span><span class="o">)</span> <span class="k">=</span> <span class="o">...</span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
-<span class="k">def</span> <span class="n">foo</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Any</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Ref</span><span class="o">)</span> <span class="k">=</span> <span class="o">...</span>
-</code></pre>
-</div>
-<h3>Spaces around operators</h3>
-<div class="highlight"><pre><code class="scala"><span class="c1">// wrong: missing spaces around operator</span>
-<span class="k">val</span> <span class="n">x</span> <span class="k">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
-<span class="k">val</span> <span class="n">x</span> <span class="k">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
-</code></pre>
-</div>
-<h3>No spaces after parenthesis</h3>
-<div class="highlight"><pre><code class="scala"><span class="c1">// wrong</span>
-<span class="k">val</span> <span class="n">threads</span> <span class="k">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="o">(</span> <span class="nc">Runtime</span><span class="o">.</span><span class="n">getRuntime</span><span class="o">.</span><span class="n">availableProcessors</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">)</span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
-<span class="k">val</span> <span class="n">threads</span> <span class="k">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="o">(</span><span class="nc">Runtime</span><span class="o">.</span><span class="n">getRuntime</span><span class="o">.</span><span class="n">availableProcessors</span> <span class="o">*</span> <span class="mi">4</span><span class="o">)</span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="scala"><span class="c1">// right</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">options</span><span class="o">.</span><span class="n">has</span><span class="o">(</span><span class="s">&quot;?&quot;</span><span class="o">)</span> <span class="o">||</span> <span class="n">options</span><span class="o">.</span><span class="n">has</span><span class="o">(</span><span class="s">&quot;h&quot;</span><span class="o">))</span> <span class="o">{</span>
-  <span class="n">parser</span><span class="o">.</span><span class="n">printHelpOn</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="n">out</span><span class="o">)</span>
-  <span class="nc">System</span><span class="o">.</span><span class="n">exit</span><span class="o">(-</span><span class="mi">1</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre>
-</div>
+</notextile>
+
+<notextile></notextile>
+
+h3. One space after colon
+
+<notextile></notextile>
+
+<notextile><h3>Spaces around operators</h3>
+</notextile>
+
+<notextile><h3>No spaces after parenthesis</h3>
+</notextile>
+
+<notextile><p></notextile></p>
       </div>
       <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
     </div>

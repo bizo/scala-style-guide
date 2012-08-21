@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+    <title>Bizo Scala Style Guide &mdash; Files</title>
+    <style type='text/css'>
+      @import 'css/default.css';
+      @import 'css/syntax.css';
+    </style>
+    <style media='print' type='text/css'>
+      @import 'css/print.css';
+    </style>
+    <meta content='Bizo Scala Style Guide' name='subject'>
+    <link href='images/favicon.png' rel='shortcut icon'>
+  </head>
+  <body>
+    <div id='wrap'>
+      <div id='header'>
+        <a href='http://bizo.github.com/scala-style-guide/' title="Bizo's Scala Style Guide"><img alt='Bizo' src='images/bizo-logo.png'></a>
+        <div class='tagline'>Conventions over Obfuscation :)</div>
+      </div>
+      <div id='pages'>
+        <ol class='toc'>
+          <li>Start Here
+            <ol class="toc">
+              <li><a href='index.html'>Introduction</a></li>
+            </ol>
+          </li>
+          <li>Guidelines
+            <ol class="toc">
+              <li><a href='white-space.html'>White Space</a></li>
+              <li><a href='indentation.html'>Indentation</a></li>
+              <li><a href='line-wrapping.html'>Line Wrapping</a></li>
+              <li><a href='methods-side-effects.html'>Methods &amp; Side Effects</a></li>
+              <li><a href='code-blocks.html'>Code Blocks</a></li>
+              <li><a href='anonymous-code-blocks.html'>Anonymous Code Blocks</a></li>
+              <li><a href='dots-spaces.html'>Dots versus Spaces</a></li>
+            </ol>
+          </li>
+          <li>Reference
+            <ol class="toc">
+              <li><a href='http://scala-lang.org'>Scala</a></li>
+              <li><a href='http://www.bizo.com'>Bizo</a></li>
+              <li><a href='http://davetron5000.github.com/scala-style'>Davetron500 Scala Style Guide</a></li>
+            </ol>
+          </li>
+          <li>
+            <form action='http://www.google.com/cse' id='searchbox_000:xxx'>
+              <input name='cx' type='hidden' value='000:xxx'>
+              <input name='cof' type='hidden' value='FORID:0'>
+              <input name='q' size='20' type='text'>
+              <input name='sa' type='submit' value='Search'>
+              <img alt='Google Custom Search' src='http://www.google.com/coop/images/google_custom_search_smnar.gif'>
+            </form>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <h1 id='files'>Files <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/">[Edit]</a></h1>
+        <ol class="toc"><li>Single-Unit files.</li><li>Naming Conventions</li></ol>
+        <p>Types should be organized to promote long-term maintenance and development.  For single-unit files (including the case<br />
+of a class/trait and its companion), Java naming and placement conventions should be preferred, despite Scala allowing<br />
+for greater flexibility in this regard.  Developers may optionally choose to use multi-unit files when required by the<br />
+language or when placing the types in a single file promotes maintainability.</p>
+<h2>Single-Unit files.</h2>
+<p>Generally, &#8220;single-unit&#8221; files include those containing a single top-level definition, meaning an un-nested class, trait<br />
+or object.  Additionally, this section also applies to classes or traits that have companion objects.  Companion objects<br />
+should be grouped with their corresponding class or trait in the same file.</p>
+<p>Using single-unit files is always allowed as a default organizational choice.</p>
+</notextile>
+
+h2. Multi-Unit files.
+
+Other than the case of companion objects, there are two cases where developers may choose to place multiple units in a
+single file.
+
+First, multiple compilation units should be placed in the same file if this is *required* by the Scala language. One
+common example is that of a sealed trait and several sub-classes or sub-objects.
+
+<notextile><p>Second, multiple compilation units should be placed in the same file when multiple classes logically form a single,<br />
+cohesive group, sharing concepts to the point where maintenance is served by containing them within a single file.<br />
+These situations are harder to predict than the aforementioned sealed supertype exception.  Generally speaking, if it is<br />
+easier to perform long-term maintenance and development on several units in a single file rather than spread across<br />
+multiple, then such an organizational strategy should be preferred for these classes.  However, keep in mind that when<br />
+multiple units are contained within a single file, it is often more difficult to find specific units when it comes time<br />
+to make changes.</p>
+<h2>Naming Conventions</h2>
+<p>The goal of a filename is to both give an indication of what is inside the file and assist a developer in knowing where<br />
+to look for the units contained in that file.  If the name does not assist in understanding what is in the file, the<br />
+developer should either pick a more explanatory name or split the contents into multiple files.</p>
+<p>Single-unit files (including those containing only a trait/class and its companion) should obey the Java naming convention.<br />
+i.e., the file containing the BizoFile class (and companion object) should be named BizoFile.scala.</p>
+<p>Multiple-unit files should be given camelCase names with a lower-case first letter.  This convention differentiates<br />
+multi-unit from single-unit files, greatly easing the process of finding declarations.  If the file contains a single<br />
+obvious type that is more significant than the others (e.g. a root type like the BizoTeam trait for the example above),<br />
+the file should be named after that type (e.g. bizoTeam.scala).  If there is no dominant type in the file, filenames<br />
+should be descriptive of the logical property shared by all units within (e.g. ast.scala).</p>
+<p>Files whose dominant (or only) type is the package object should be named &#8220;package.scala&#8221;.</p>
+<p>Not being able to think of a good filename is a strong indication that the file contains unrelated concepts!</p>
+<p>In all cases, files should be placed in the directory corresponding to the package of the primary type(s) that they<br />
+contain.  e.g., the bizoTeam.scala file should be placed in com/bizo/teams.  As packages should also group related<br />
+classes together, we expect that most files will contain only types living under this primary package.</p>
+      </div>
+      <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
+    </div>
+  </body>
+</html>

@@ -55,36 +55,18 @@
         </ol>
       </div>
       <div id='content'>
-        <h1 id='anonymous code blocks'>Anonymous Code Blocks <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/anonymous-code-blocks.textile">[Edit]</a></h1>
+        <h1 id='anonymous code blocks'>Anonymous Code Blocks <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/">[Edit]</a></h1>
         <ol class="toc"><li>Use parenthesis for pure anonymous functions with placeholder syntax (underscore)</li><li>Use braces for side-effecting anonymous functions with placeholder syntax (underscore)</li><li>Use braces and new indented code block for longer anonymous functions</li></ol>
         <h2>Use parenthesis for pure anonymous functions with placeholder syntax (underscore)</h2>
-<div class="highlight"><pre><code class="scala">  <span class="c1">// preferred</span>
-  <span class="k">val</span> <span class="n">cubes</span> <span class="k">=</span> <span class="nc">_localCubes</span><span class="o">.</span><span class="n">values</span> <span class="n">flatMap</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">values</span><span class="o">)</span>
-</code></pre>
-</div>
-<div class="highlight"><pre><code class="scala">  <span class="c1">// hmmm-kay</span>
-  <span class="k">val</span> <span class="n">cubes</span> <span class="k">=</span> <span class="nc">_localCubes</span><span class="o">.</span><span class="n">values</span> <span class="n">flatMap</span> <span class="o">{</span> <span class="n">_</span><span class="o">.</span><span class="n">values</span> <span class="o">}</span>
-</code></pre>
-</div>
-<h2>Use braces for side-effecting anonymous functions with placeholder syntax (underscore)</h2>
-<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
-  <span class="n">nodes</span><span class="o">.</span><span class="n">valuesIterator</span> <span class="n">foreach</span> <span class="o">{</span> <span class="n">_</span><span class="o">.</span><span class="n">delete</span><span class="o">()</span> <span class="o">}</span>
-</code></pre>
-</div>
-<p>This produces clearer grouping and delimiter-balance than consecutive parenthesis.</p>
-<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong</span>
-  <span class="n">nodes</span><span class="o">.</span><span class="n">valuesIterator</span> <span class="n">foreach</span> <span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">delete</span><span class="o">())</span>
-</code></pre>
-</div>
-<h2>Use braces and new indented code block for longer anonymous functions</h2>
-<div class="highlight"><pre><code class="scala">  <span class="c1">// right</span>
-  <span class="k">val</span> <span class="n">remotePartitions</span> <span class="k">=</span> <span class="n">latest</span><span class="o">.</span><span class="n">partitions</span> <span class="n">map</span> <span class="o">{</span> <span class="n">p</span> <span class="k">=&gt;</span>
-    <span class="k">val</span> <span class="n">partition</span> <span class="k">=</span> <span class="nc">Json</span><span class="o">.</span><span class="n">parse</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="n">partition</span><span class="o">)</span>
-    <span class="k">val</span> <span class="n">pv</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PartitionVersion</span><span class="o">(</span><span class="k">new</span> <span class="nc">Partition</span><span class="o">(</span><span class="n">dims</span><span class="o">,</span> <span class="n">partition</span><span class="o">),</span> <span class="n">p</span><span class="o">.</span><span class="n">version</span><span class="o">)</span>
-    <span class="k">new</span> <span class="nc">RemotePartition</span><span class="o">(</span><span class="n">cube</span><span class="o">.</span><span class="n">database</span><span class="o">,</span> <span class="n">cube</span><span class="o">.</span><span class="n">cube</span><span class="o">,</span> <span class="n">pv</span><span class="o">,</span> <span class="n">path</span><span class="o">(</span><span class="n">cubeURL</span><span class="o">,</span> <span class="n">pv</span><span class="o">.</span><span class="n">partitionPath</span><span class="o">))</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
+</notextile>
+
+<notextile><h2>Use braces for side-effecting anonymous functions with placeholder syntax (underscore)</h2>
+</notextile>
+
+This produces clearer grouping and delimiter-balance than consecutive parenthesis.
+
+<notextile><h2>Use braces and new indented code block for longer anonymous functions</h2>
+<p></notextile></p>
       </div>
       <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
     </div>
