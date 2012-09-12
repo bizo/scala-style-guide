@@ -57,7 +57,7 @@
       </div>
       <div id='content'>
         <h1 id='files'>Files <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/files.textile">[Edit]</a></h1>
-        <ol class="toc"><li>Single-Unit files.</li><li>Naming Conventions</li></ol>
+        <ol class="toc"><li>Single-Unit files.</li><li>Multi-Unit files.</li><li>Naming Conventions</li></ol>
         <p>Types should be organized to promote long-term maintenance and development.  For single-unit files (including the case<br />
 of a class/trait and its companion), Java naming and placement conventions should be preferred, despite Scala allowing<br />
 for greater flexibility in this regard.  Developers may optionally choose to use multi-unit files when required by the<br />
@@ -67,17 +67,32 @@ language or when placing the types in a single file promotes maintainability.</p
 or object.  Additionally, this section also applies to classes or traits that have companion objects.  Companion objects<br />
 should be grouped with their corresponding class or trait in the same file.</p>
 <p>Using single-unit files is always allowed as a default organizational choice.</p>
-</notextile>
+<div class="highlight"><pre><code class="scala"> 
+<span class="k">package</span> <span class="nn">com.bizo.file</span>
 
-h2. Multi-Unit files.
+<span class="k">class</span> <span class="nc">BizoFile</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
 
-Other than the case of companion objects, there are two cases where developers may choose to place multiple units in a
-single file.
+<span class="k">object</span> <span class="nc">BizoFile</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span> 
+</code></pre>
+</div>
+<h2>Multi-Unit files.</h2>
+<p>Other than the case of companion objects, there are two cases where developers may choose to place multiple units in a<br />
+single file.</p>
+<p>First, multiple compilation units should be placed in the same file if this is <strong>required</strong> by the Scala language. One<br />
+common example is that of a sealed trait and several sub-classes or sub-objects.</p>
+<div class="highlight"><pre><code class="scala"> 
+<span class="k">package</span> <span class="nn">com.bizo.teams</span>
 
-First, multiple compilation units should be placed in the same file if this is *required* by the Scala language. One
-common example is that of a sealed trait and several sub-classes or sub-objects.
+<span class="k">sealed</span> <span class="k">trait</span> <span class="nc">BizoTeam</span>
 
-<notextile><p>Second, multiple compilation units should be placed in the same file when multiple classes logically form a single,<br />
+<span class="k">case</span> <span class="k">object</span> <span class="nc">AppsTeam</span> <span class="k">extends</span> <span class="nc">BizoTeam</span> 
+<span class="k">case</span> <span class="k">object</span> <span class="nc">DataTeam</span> <span class="k">extends</span> <span class="nc">BizoTeam</span> 
+<span class="k">case</span> <span class="k">object</span> <span class="nc">InfrastructureTeam</span> <span class="k">extends</span> <span class="nc">BizoTeam</span> 
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">AdHocTeam</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">BizoTeam</span> 
+</code></pre>
+</div>
+<p>Second, multiple compilation units should be placed in the same file when multiple classes logically form a single,<br />
 cohesive group, sharing concepts to the point where maintenance is served by containing them within a single file.<br />
 These situations are harder to predict than the aforementioned sealed supertype exception.  Generally speaking, if it is<br />
 easier to perform long-term maintenance and development on several units in a single file rather than spread across<br />

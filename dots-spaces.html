@@ -57,29 +57,75 @@
       </div>
       <div id='content'>
         <h1 id='dots vs spaces'>Dots vs Spaces <a href="https://github.com/bizo/scala-style-guide/edit/master/doc/dots-spaces.textile">[Edit]</a></h1>
-        <ol class="toc"><li>Use spaces when passing blocks delimited with curly braces</li><li>Use dots for side-effecting methods</li><li>Use dots for consecutive accessors</li><li>When in doubt, try to reduce the line noise</li></ol>
+        <ol class="toc"><li>Use spaces when passing blocks delimited with curly braces</li><li>Use dots for side-effecting methods</li><li>Use dots for consecutive accessors</li><li>Use spaces to separate pure operations</li><li>When in doubt, try to reduce the line noise</li></ol>
         <h2>Use spaces when passing blocks delimited with curly braces</h2>
-</notextile>
-
-<notextile><h2>Use dots for side-effecting methods</h2>
-</notextile>
-
-<notextile><h2>Use dots for consecutive accessors</h2>
-</notextile>
-
-
-<notextile></notextile>
-
-h2. Use spaces to separate pure operations
-
-<notextile></notextile>
-
-<notextile></notextile>
-
-<notextile><h2>When in doubt, try to reduce the line noise</h2>
-</notextile>
-
-<notextile>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
+  <span class="n">missiles</span> <span class="n">foreach</span> <span class="o">{</span> <span class="n">missile</span> <span class="k">=&gt;</span> <span class="n">missile</span><span class="o">.</span><span class="n">fire</span><span class="o">()</span> <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// not on this planet!</span>
+  <span class="n">missiles</span><span class="o">.</span><span class="n">foreach</span> <span class="o">{</span> <span class="n">missile</span> <span class="k">=&gt;</span> <span class="n">missile</span><span class="o">.</span><span class="n">fire</span><span class="o">()</span> <span class="o">}</span>
+</code></pre>
+</div>
+<h2>Use dots for side-effecting methods</h2>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
+  <span class="n">missiles</span><span class="o">.</span><span class="n">fire</span><span class="o">()</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// don&#39;t even think about it!</span>
+  <span class="n">missiles</span> <span class="n">fire</span><span class="o">()</span>
+</code></pre>
+</div>
+<h2>Use dots for consecutive accessors</h2>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
+  <span class="k">for</span> <span class="o">(</span><span class="n">c</span> <span class="k">&lt;-</span> <span class="n">competitors</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">reverse</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">allocate</span><span class="o">(</span><span class="n">c</span><span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// nope.</span>
+  <span class="k">for</span> <span class="o">(</span><span class="n">c</span> <span class="k">&lt;-</span> <span class="n">competitors</span><span class="o">.</span><span class="n">view</span> <span class="n">reverse</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">allocate</span><span class="o">(</span><span class="n">c</span><span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// what did I tell you about spaces?</span>
+  <span class="k">for</span> <span class="o">(</span><span class="n">c</span> <span class="k">&lt;-</span> <span class="n">competitors</span> <span class="n">view</span> <span class="n">reverse</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">allocate</span><span class="o">(</span><span class="n">c</span><span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+<h2>Use spaces to separate pure operations</h2>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
+  <span class="k">val</span> <span class="n">evenlyDistributed</span> <span class="k">=</span> <span class="n">pref</span><span class="o">.</span><span class="n">selectors</span> <span class="n">zip</span> <span class="n">distribute</span><span class="o">(</span><span class="n">pref</span><span class="o">.</span><span class="n">quantity</span><span class="o">,</span> <span class="n">avails</span><span class="o">)</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
+  <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;Distribution: &quot;</span> <span class="o">+</span> <span class="o">(</span><span class="n">values</span> <span class="n">mkString</span> <span class="s">&quot;\n&quot;</span><span class="o">))</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// good</span>
+  <span class="n">selectors</span> <span class="n">map</span> <span class="n">getOrCreateNode</span> <span class="n">map</span> <span class="o">{</span> <span class="k">_</span><span class="o">.</span><span class="n">available</span><span class="o">(</span><span class="n">priority</span><span class="o">)</span> <span class="o">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong:  get is an accessor, not an operation</span>
+  <span class="n">customers</span> <span class="n">get</span> <span class="n">selectedId</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// wrong:  available is an accessor</span>
+  <span class="c1">//         (an operation is verb, not an adjective)</span>
+  <span class="n">customers</span> <span class="n">available</span> <span class="n">today</span>
+</code></pre>
+</div>
+<h2>When in doubt, try to reduce the line noise</h2>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// mmm-kay</span>
+  <span class="n">overflow</span> <span class="o">-=</span> <span class="o">(</span><span class="n">exclude</span> <span class="n">map</span> <span class="o">{</span> <span class="k">_</span><span class="o">.</span><span class="n">available</span><span class="o">(</span><span class="n">priority</span><span class="o">)</span> <span class="o">}</span> <span class="n">sum</span><span class="o">)</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="scala">  <span class="c1">// better: slightly less noisy since dots are less noisy than parenthesis</span>
+  <span class="n">overflow</span> <span class="o">-=</span> <span class="n">exclude</span><span class="o">.</span><span class="n">map</span> <span class="o">{</span> <span class="k">_</span><span class="o">.</span><span class="n">available</span><span class="o">(</span><span class="n">priority</span><span class="o">)</span> <span class="o">}.</span><span class="n">sum</span>
+</code></pre>
+</div>
       </div>
       <div id='footer'>Copyright &copy; 2011 Bizo inc.</div>
     </div>
